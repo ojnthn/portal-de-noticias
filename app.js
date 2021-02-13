@@ -1,23 +1,9 @@
-const express = require('express'),
-    app     = express();
+const   app = require('./config/server');
 
-// Define ao Express que o motor de geração de views será o EJS
-app.set('view engine', 'ejs');
-
-app.get('/', (prReq, prRes) => {
-    prRes.render("home/inicio");
-});
-
-app.get('/admin/noticia/form', (prReq, prRes) => {
-   prRes.render('admin/noticia/form');
-});
-
-app.get('/noticia/lista', (prReq, prRes) => {
-   prRes.render('noticia/lista')
-});
-
-app.get('/noticia/id', (prReq, prRes) => {
-   prRes.render('noticia/noticia')
-});
+// Definição das rotas
+const   routeHome                = require('./app/routes/home')(app),
+        routeAdminNoticiaForm    = require('./app/routes/admin/noticia/form')(app),
+        routeNoticiaLista        = require('./app/routes/noticia/lista')(app),
+        routeNoticia             = require('./app/routes/noticia/noticia')(app);
 
 app.listen(3000, () => console.log('Server running with Express'));
