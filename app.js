@@ -1,16 +1,23 @@
-var express = require('express'),
+const express = require('express'),
     app     = express();
 
+// Define ao Express que o motor de geração de views será o EJS
+app.set('view engine', 'ejs');
+
 app.get('/', (prReq, prRes) => {
-
-    prRes.send('<html><body>Portal de notícias</body></html>')
-
+    prRes.render("home/inicio");
 });
 
-app.get('/tecnologia', (prReq, prRes) => {
+app.get('/admin/noticia/form', (prReq, prRes) => {
+   prRes.render('admin/noticia/form');
+});
 
-    prRes.send('<html><body>Notícias de tecnologia</body></html>')
+app.get('/noticia/lista', (prReq, prRes) => {
+   prRes.render('noticia/lista')
+});
 
+app.get('/noticia/id', (prReq, prRes) => {
+   prRes.render('noticia/noticia')
 });
 
 app.listen(3000, () => console.log('Server running with Express'));
