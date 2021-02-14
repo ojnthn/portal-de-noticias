@@ -3,8 +3,19 @@
 		<head>
 			<meta charset="utf-8"/>
 			<title>Portal de notícias</title>
+			<%- include('../base/head.ejs') %>
 		</head>
 	<body>
-		<h1>Notícia</h1>
+		<div class="container">
+			<h1><%= aNoticia[0].titulo %></h1>
+			<div class="row">
+				<p class="text-justify">
+					<%= aNoticia[0].noticia %>
+				</p>
+			</div>
+			<div class="text-center">
+				<a href="lista" class="btn btn-primary">Voltar</a>
+			</div>
+		</div>
 	</body>
 </html>
